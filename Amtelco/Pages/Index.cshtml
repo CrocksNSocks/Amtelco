@@ -1,0 +1,42 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="grid-container"></div>
+    <div class="grid-item">Log in</div>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    
+    <p>Please enter your user information.</p>
+
+</div>
+
+
+<form action="~/js/login.js">
+   <div class="login-field">
+        <label>Username</label><br/>
+        <input type="text" name="user" id="uname"/><br/>
+        <label>password</label><br/>
+        <input type="password" name="pswrd" id="pword"/><br/>
+        <button type="submit" name="login" id="verify">Login</button>
+        
+    </div>
+</form>
+
+<div>
+    <ul>
+        <li class="products">
+            <img  src="~/img/madison.png" alt="Facebook Logo"/>
+        </li>
+        <li class="products">
+            <img  src="~/img/onecall.png" alt="LinkedIn Logo"/>
+        </li>
+        <li class="products">
+            <img  src="~/img/Telescan.png" alt="Twitter Logo"/>
+        </li>
+    </ul>
+</div>
+
