@@ -11,17 +11,30 @@ const del = document.getElementById("delete"); // collects delete button
 const logout = document.getElementById("logout"); // collects logout button
 
 const addAppt = document.getElementById("addAppt");
+const chooseAppt = document.getElementById("chooseAppt");
+const editAppt = document.getElementById("editAppt");
+const deleteAppt = document.getElementById("deleteAppt");
+
 
 const viewList = document.getElementById("list"); // List radio button variable
 const viewCal = document.getElementById("calender"); // calender radio button variable
 
 addAppt.style.display = "none";
+chooseAppt.style.display = "none";
+editAppt.style.display = "none";
+deleteAppt.style.display = "none";
 viewCal.style.display = "none";
+
 
 function viewAddAppt()
 {
+    
     addAppt.style.display = "block";
+    chooseAppt.style.display = "none";
+    editAppt.style.display = "none";
+    deleteAppt.style.display = "none";
 }
+
 
 function addAppointment()
 {
@@ -42,6 +55,14 @@ function addAppointment()
     return false;
 }
 
+function viewEditAppt()
+{
+    chooseAppt.style.display = "block";
+    editAppt.style.display = "block";
+    addAppt.style.display = "none";
+    deleteAppt.style.display = "none";
+}
+
 function editAppointment() {
     var createAppt = document.getElementById("list");
 
@@ -60,6 +81,13 @@ function editAppointment() {
     return false;
 }
 
+function viewDelAppt() {
+    deleteAppt.style.display = "block";
+    chooseAppt.style.display = "none";
+    editAppt.style.display = "none";
+    addAppt.style.display = "none";
+}
+/*
 function deleteAppointment() {
     var createAppt = document.getElementById("list");
 
@@ -77,7 +105,9 @@ function deleteAppointment() {
 
     return false;
 }
+*/
 
+/*
 function logout() {
     var createAppt = document.getElementById("list");
 
@@ -94,7 +124,7 @@ function logout() {
     addAppt.style.display = "none";
 
     return false;
-}
+} */
 /*view menu*/
 
 

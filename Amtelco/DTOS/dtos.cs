@@ -1,6 +1,10 @@
-﻿namespace TodoApi.Models
+﻿using System;
+using TodoApi.Models;
+
+
+namespace Amtelco.DTOS
 {
-    public class TodoItem
+    public record dtos
     {
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
