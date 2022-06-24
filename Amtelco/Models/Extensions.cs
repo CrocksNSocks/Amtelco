@@ -5,19 +5,19 @@ namespace Amtelco.Models
 {
     public static class Extensions
     {
-        public static dtos AsDto(this TodoItem todoItem)
+        public static dtos AsDto(this TodoItem item)
         {
             return new dtos
             {
-                Id = todoItem.Id,
-                UserId = todoItem.UserId,
-                Created = todoItem.Created,
-                LastChanged = todoItem.LastChanged,
-                Start = todoItem.Start,
-                Duration = todoItem.Duration,
-                Name = todoItem.Name,
-                Description = todoItem.Description,
-                IsComplete = todoItem.IsComplete
+                Id = item.Id,
+                UserId = item.UserId,
+                Created = item.Created,
+                LastChanged = item.LastChanged,
+                Start = item.Start,
+                Duration = item.Duration,
+                Name = item.Name,
+                Description = item.Description,
+                IsComplete = item.IsComplete
             };
         }
     }

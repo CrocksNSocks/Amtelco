@@ -15,26 +15,26 @@ namespace Amtelco.Controllers
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
-        private readonly TodoContext _context;
+        private readonly TodoContext context;
 
         public TodoItemsController(TodoContext context)
         {
-            _context = context;
+            this.context = context;
         }
 
         // GET: api/TodoItems
         [HttpGet]
         public IEnumerable<dtos> GetTodoItems()
         {
-            var items = _context.GetTodoItems().Select(item => item.AsDto());
-            return items;
+            //var items = _context.GetTodoItems().Select(item => item.AsDto());
+            return null; //items;
         }
 
         // GET: api/TodoItems/5
         [HttpGet("{id}")]
         public ActionResult<TodoItem> GetTodoItem(Guid id)
         {
-            var todoItem = _context.GetTodoItem(id);
+            var todoItem = context.GetTodoItem(id);
 
             if (todoItem is null)
             {
@@ -55,7 +55,7 @@ namespace Amtelco.Controllers
 
                 try
                 {
-                    await _context.SaveChangesAsync();
+                    await context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -74,6 +74,27 @@ namespace Amtelco.Controllers
             return BadRequest();
         }
 
+        // POST /items
+        [HttpPost]
+        public ActionResult<dtos> CreateItem(CreateTodoItemDTO itemDTO)
+        {
+            TodoItem item = new()
+            {
+                Id = Guid.NewGuid(),
+                UserId = Guid.NewGuid(),
+                Created = itemDTO.Created,
+                LastChanged = itemDTO.LastChanged,
+                Start = itemDTO.Start,
+                Duration = itemDTO.Duration,
+                Description = itemDTO.Description,
+                IsComplete = itemDTO.IsComplete
+            };
+
+            context.CreateItem(item);
+
+            return CreatedAtAction(nameof(GetTodoItem), new { id = item.Id}, item.AsDto());
+        }
+
         private bool TodoItemExists(Guid id)
         {
             throw new NotImplementedException();
@@ -84,12 +105,12 @@ namespace Amtelco.Controllers
         [HttpPost]
         public async Task<ActionResult<TodoItem>> PostTodoItem(TodoItem todoItem)
         {
-          if (_context.GetTodoItems == null)
+          if (context.GetTodoItems == null)
           {
               return Problem("Entity set 'TodoContext.TodoItems'  is null.");
           }
             //_context.GetTodoItems.Add(todoItem);
-            await _context.SaveChangesAsync();
+            await context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetTodoItem), new { id = todoItem.Id }, todoItem);
         }
@@ -98,18 +119,18 @@ namespace Amtelco.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTodoItem(Guid id)
         {
-            if (_context.GetTodoItems == null)
+            if (context.GetTodoItems == null)
             {
                 return NotFound();
             }
-            var todoItem = _context.GetTodoItems;
+            var todoItem = context.GetTodoItems;
             if (todoItem == null)
             {
                 return NotFound();
             }
 
             //object value = _context.GetTodoItems;
-            await _context.SaveChangesAsync();
+            await context.SaveChangesAsync();
 
             return NoContent();
         }
