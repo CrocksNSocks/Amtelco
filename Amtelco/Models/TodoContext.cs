@@ -11,10 +11,7 @@ namespace TodoApi.Models
         IEnumerable<TodoItem> GetItems();
         void CreateItem(TodoItem item);
         void UpdateItem(TodoItem item);
+        void DeleteItem(Guid id);
 
-
-        object GetTodoItem(Guid id);
-        IEnumerable<object> GetTodoItems();
-        Task SaveChangesAsync();
     }
 }

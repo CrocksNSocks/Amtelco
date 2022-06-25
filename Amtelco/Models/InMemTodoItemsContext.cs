@@ -21,19 +21,14 @@ namespace Amtelco.Models
                               }
 
              };
-        public IEnumerable<TodoItem> GetTodoItems()
+        public IEnumerable<TodoItem> GetItems()
         {
             return _items;
         }
 
-        public TodoItem GetTodoItem(Guid id)
+        public TodoItem GetItem(Guid id)
         {
             return _items.Where(item => item.Id == id).SingleOrDefault();
-        }
-
-        internal Task SaveChangesAsync()
-        {
-            throw new NotImplementedException();
         }
 
         public void CreateItem(TodoItem item)
@@ -41,34 +36,40 @@ namespace Amtelco.Models
             _items.Add(item);
         }
 
-        public TodoItem GetItem(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<TodoItem> GetItems()
-        {
-            throw new NotImplementedException();
-        }
-
-        object TodoContext.GetTodoItem(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerable<object> TodoContext.GetTodoItems()
-        {
-            throw new NotImplementedException();
-        }
-
-        Task TodoContext.SaveChangesAsync()
-        {
-            throw new NotImplementedException();
-        }
-
         public void UpdateItem(TodoItem item)
         {
+           var index = _items.FindIndex(item => item.Id == item.Id);
+            _items[index] = item;
+        }
+
+        public void DeleteItem(Guid id)
+        {
+            var index = _items.FindIndex(existingItem => existingItem.Id == id);
+            _items.RemoveAt(index);
+        }
+
+        /*
+
+         object TodoContext.GetTodoItem(Guid id)
+         {
+             throw new NotImplementedException();
+         }
+
+         IEnumerable<object> TodoContext.GetTodoItems()
+         {
+             throw new NotImplementedException();
+         }
+
+         Task TodoContext.SaveChangesAsync()
+         {
+             throw new NotImplementedException();
+
+        internal Task SaveChangesAsync()
+        {
             throw new NotImplementedException();
         }
+         }*/
+
+
     }
 }

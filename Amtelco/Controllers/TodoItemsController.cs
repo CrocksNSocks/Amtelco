@@ -24,27 +24,27 @@ namespace Amtelco.Controllers
 
         // GET: api/TodoItems
         [HttpGet]
-        public IEnumerable<dtos> GetTodoItems()
+        public IEnumerable<dtos> GetItems()
         {
-            //var items = _context.GetTodoItems().Select(item => item.AsDto());
-            return null; //items;
+            var items = context.GetItems().Select(item => item.AsDto());
+            return items; //items;
         }
 
         // GET: api/TodoItems/5
         [HttpGet("{id}")]
-        public ActionResult<TodoItem> GetTodoItem(Guid id)
+        public ActionResult<dtos> GetItem(Guid id)
         {
-            var todoItem = context.GetTodoItem(id);
+            var item = context.GetItem(id);
 
-            if (todoItem is null)
+            if (item is null)
             {
                 return NotFound();
             }
 
-            return NoContent();
+            return item.AsDto();
         }
 
-        // PUT: api/TodoItems/5
+     /*   // PUT: api/TodoItems/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTodoItem(Guid id, TodoItem GettodoItem)
@@ -72,9 +72,9 @@ namespace Amtelco.Controllers
                 return NoContent();
             }
             return BadRequest();
-        }
+        }*/
 
-        // POST /items
+        // POST /TodoItems
         [HttpPost]
         public ActionResult<dtos> CreateItem(CreateTodoItemDTO itemDTO)
         {
@@ -92,7 +92,48 @@ namespace Amtelco.Controllers
 
             context.CreateItem(item);
 
-            return CreatedAtAction(nameof(GetTodoItem), new { id = item.Id}, item.AsDto());
+            return CreatedAtAction(nameof(GetItem), new { id = item.Id}, item.AsDto());
+        }
+
+        // PUT /TodoItems{id}
+        [HttpPut("{id}")]
+        public ActionResult UpdateItem(Guid id, UpdateItemDTO itemDTO)
+        {
+            var existingItem = context.GetItem(id);
+
+            if (existingItem is null)
+            {
+                return NotFound();
+            }
+
+            TodoItem updatedItem = existingItem with
+            {
+                Created = itemDTO.Created,
+                LastChanged = itemDTO.LastChanged,
+                Start = itemDTO.Start,
+                Duration = itemDTO.Duration,
+                Description = itemDTO.Description,
+                IsComplete = itemDTO.IsComplete
+            };
+
+            context.UpdateItem(updatedItem);
+
+            return NoContent();
+        }
+
+        //DELETE /items/{id}
+        [HttpDelete("{id}")]
+        public ActionResult DeleteItem(Guid id)
+        {
+            var existingItem = context.GetItem(id);
+
+            if (existingItem is null)
+            {
+                return NotFound();
+            }
+
+            context.DeleteItem(id);
+            return NoContent();
         }
 
         private bool TodoItemExists(Guid id)
@@ -100,7 +141,7 @@ namespace Amtelco.Controllers
             throw new NotImplementedException();
         }
 
-        // POST: api/TodoItems
+     /*   // POST: api/TodoItems
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<TodoItem>> PostTodoItem(TodoItem todoItem)
