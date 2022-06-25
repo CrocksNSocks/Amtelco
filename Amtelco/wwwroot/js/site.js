@@ -87,46 +87,6 @@ function viewDelAppt() {
     editAppt.style.display = "none";
     addAppt.style.display = "none";
 }
-/*
-function deleteAppointment() {
-    var createAppt = document.getElementById("list");
-
-    var createRow = createAppt.insertRow(-1);
-    var start = createRow.insertCell(0);
-    var end = createRow.insertCell(1);
-    var name = createRow.insertCell(2);
-    var desc = createRow.insertCell(3);
-    start.innerHTML = document.getElementById("startAppt").value;
-    end.innerHTML = document.getElementById("endAppt").value;
-    name.innerHTML = document.getElementById("nameAppt").value;
-    desc.innerHTML = document.getElementById("descAppt").value;
-
-    addAppt.style.display = "none";
-
-    return false;
-}
-*/
-
-/*
-function logout() {
-    var createAppt = document.getElementById("list");
-
-    var createRow = createAppt.insertRow(-1);
-    var start = createRow.insertCell(0);
-    var end = createRow.insertCell(1);
-    var name = createRow.insertCell(2);
-    var desc = createRow.insertCell(3);
-    start.innerHTML = document.getElementById("startAppt").value;
-    end.innerHTML = document.getElementById("endAppt").value;
-    name.innerHTML = document.getElementById("nameAppt").value;
-    desc.innerHTML = document.getElementById("descAppt").value;
-
-    addAppt.style.display = "none";
-
-    return false;
-} */
-/*view menu*/
-
 
 function SelectCal() {
     viewList.style.display = "none";

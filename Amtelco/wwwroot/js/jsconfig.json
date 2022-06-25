@@ -1,0 +1,28 @@
+{
+  "exclude": [
+    "**/bin",
+    "**/bower_components",
+    "**/jspm_packages",
+    "**/node_modules",
+    "**/obj",
+    "**/platforms"
+  ],
+
+  "Login Credintials": [
+    {
+      "id": 1,
+      "username": "Bob",
+      "password": "BobPassword"
+    },
+    {
+      "id": 2,
+      "username": "Fred",
+      "password": "FredPassword"
+    },
+    {
+      "id": 3,
+      "username": "George",
+      "password": "GeorgePassword"
+    }
+  ]
+}

@@ -120,3 +120,29 @@ ul
     color: white;
 }
 
+.nav-menu 
+{
+    align-content: center;
+    text-align: center;
+    margin: 0;
+    padding: 10px 0;
+    border-collapse: collapse;
+    width: 80%;
+}
+
+
+
+
+.appointments-list {
+    align-content: center;
+    text-align: center;
+    margin: 0;
+    padding: 10px 0;
+    border-collapse: collapse;
+    width: 80%;
+}
+
+.men-row:nth-last-child(odd) 
+{
+    background-color: #f2f2f2;
+}

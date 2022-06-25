@@ -5,8 +5,8 @@
 }
 <h1>@ViewData["Title"]</h1>
 <body>
-<div class="springledorf" id="toolbar">
-    <table>
+<div id="toolbar">
+    <table class="nav-menu">
         <tr>
             <th id="add" onclick="viewAddAppt()">Add</th>
             <th id="edit" onclick="viewEditAppt()">Edit</th>
@@ -17,7 +17,7 @@
 </div>
 
 
-<form action="~/js/site.js" name="newAppt" id="addAppt">
+<form id="addAppt" method = "post" action="Amtelco/Controllers/TodoItemsController" name="newAppt" >
    <div class="create-appt">
         <label for="startAppt">Start Time</label><br/>
         <input type="text" id="startAppt"/><br/>
@@ -73,7 +73,7 @@
 
 <div class="appointments-list">
     <table class="appointment-list" id="list">
-        <tr>
+        <tr class = "men-row">
             <th>Start</th>
             <th>End</th>
             <th>Name</th>

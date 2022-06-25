@@ -47,29 +47,5 @@ namespace Amtelco.Models
             var index = _items.FindIndex(existingItem => existingItem.Id == id);
             _items.RemoveAt(index);
         }
-
-        /*
-
-         object TodoContext.GetTodoItem(Guid id)
-         {
-             throw new NotImplementedException();
-         }
-
-         IEnumerable<object> TodoContext.GetTodoItems()
-         {
-             throw new NotImplementedException();
-         }
-
-         Task TodoContext.SaveChangesAsync()
-         {
-             throw new NotImplementedException();
-
-        internal Task SaveChangesAsync()
-        {
-            throw new NotImplementedException();
-        }
-         }*/
-
-
     }
 }
