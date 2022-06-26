@@ -1,4 +1,7 @@
 {
+  "compilerOptions": {
+      "experimentalDecorators": true
+  },
   "exclude": [
     "**/bin",
     "**/bower_components",

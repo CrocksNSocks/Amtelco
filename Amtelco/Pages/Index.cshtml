@@ -16,12 +16,12 @@
 
 
 <form action="~/js/login.js">
-   <div class="login-field">
+   <div class="login-field" id="verifyForm">
         <label>Username</label><br/>
         <input type="text" name="user" id="uname"/><br/>
         <label>password</label><br/>
         <input type="password" name="pswrd" id="pword"/><br/>
-        <button type="submit" name="login" id="verify">Login</button>
+        <button type="button" name="login" id="verify" onclick="verify()">Login</button>
         
     </div>
 </form>

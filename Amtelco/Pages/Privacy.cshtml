@@ -34,7 +34,7 @@
 
 <form action="~/js/site.js" name="changeAppt" id="chooseAppt">
    <div class="create-appt">
-        <button type="button" name="create" id="createAppt" onclick="editAppointment()">Choose Appointment</button>
+        <button type="button" name="create" id="createAppt" onclick="chooseAppointment()">Choose Appointment</button>
         
     </div>
 </form>
@@ -73,12 +73,15 @@
 
 <div class="appointments-list">
     <table class="appointment-list" id="list">
-        <tr class = "men-row">
-            <th>Start</th>
-            <th>End</th>
-            <th>Name</th>
-            <th>Description</th>
-        </tr>
+        <thead>
+            <tr class = "men-row">
+                <th>Start</th>
+                <th>End</th>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody id="edit"> </tbody>
     </table>
 </div>
 

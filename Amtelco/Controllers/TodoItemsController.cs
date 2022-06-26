@@ -27,10 +27,10 @@ namespace Amtelco.Controllers
         public IEnumerable<dtos> GetItems()
         {
             var items = context.GetItems().Select(item => item.AsDto());
-            return items; //items;
+            return items;
         }
 
-        // GET: api/TodoItems/5
+        // GET: api/TodoItems
         [HttpGet("{id}")]
         public ActionResult<dtos> GetItem(Guid id)
         {
